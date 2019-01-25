@@ -1,7 +1,10 @@
 // Enemies our player must avoid
-var Enemy = function() {
+var Enemy = function(_x, _y, _speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.x = _x;
+    this.y = _y;
+    this.speed = _speed;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -29,8 +32,12 @@ Enemy.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-
+const allEnemies = [];
+const enemy1 = new Enemy(0, 50, 100);
+const enemy2 = new Enemy(0, 150, 150);
+const enemy3 = new Enemy(0, 230, 200);
+const enemy4 = new Enemy(100, 100, 250);
+allEnemies.push(enemy1, enemy2, enemy3, enemy4);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
