@@ -17,6 +17,12 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this.x += this.speed * dt;
+
+    // reset enemy if crossed the boundary
+    if (this.x > 505) {
+      this.x = 0;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -33,7 +39,7 @@ Enemy.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 const allEnemies = [];
-const enemy1 = new Enemy(0, 50, 100);
+const enemy1 = new Enemy(0, 60, 100);
 const enemy2 = new Enemy(0, 150, 150);
 const enemy3 = new Enemy(0, 230, 200);
 const enemy4 = new Enemy(100, 100, 250);
