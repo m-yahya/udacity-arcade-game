@@ -35,7 +35,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 // level counter
-let counter = 1;
+let level = 1;
 
 var Player = function(_x, _y) {
   this.x = _x;
@@ -66,16 +66,35 @@ Player.prototype.handleInput = function(key) {
   }
   // reset player position once reached on the top
   if (this.y < 0) {
-    counter++;
-    document.getElementById('level-counter').innerHTML = counter;
+    level++;
     setTimeout(() => {
-      this.x = 200;
-      this.y = 405;
+      this.resetPosition();
     }, 1000);
   }
+
   // reset level counter
-  if (counter == 5) {
-    counter = 0;
+  if (level > 5) {
+    level = 1;
+  }
+}
+
+// reset player position
+Player.prototype.resetPosition = function() {
+  this.x = 200;
+  this.y = 405;
+  document.getElementById('level-counter').innerHTML = level;
+}
+
+// update
+Player.prototype.update = function() {
+  for (enemy of allEnemies) {
+    if (this.x < enemy.x + 40 &&
+      this.x + 40 > enemy.x &&
+      this.y < enemy.y + 40 &&
+      this.y + 40 > enemy.y) {
+      level = 1;
+      this.resetPosition();
+    }
   }
 }
 
