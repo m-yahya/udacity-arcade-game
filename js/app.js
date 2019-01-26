@@ -34,9 +34,12 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function() {
-  this.x = 200;
-  this.y = 380;
+// level counter
+let counter = 1;
+
+var Player = function(_x, _y) {
+  this.x = _x;
+  this.y = _y;
   this.sprite = 'images/char-boy.png';
 };
 
@@ -44,17 +47,49 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+Player.prototype.handleInput = function(key) {
+  // enabling left key movement
+  if (key == 'left' && this.x > 0) {
+    this.x -= 101;
+  }
+  // enabling right key movement
+  if (key == 'right' && this.x < 400) {
+    this.x += 101;
+  }
+  // enabling up key
+  if (key == 'up' && this.y > 0) {
+    this.y -= 83;
+  }
+  // enabling down key
+  if (key == 'down' && this.y < 400) {
+    this.y += 83;
+  }
+  // reset player position once reached on the top
+  if (this.y < 0) {
+    counter++;
+    document.getElementById('level-counter').innerHTML = counter;
+    setTimeout(() => {
+      this.x = 200;
+      this.y = 405;
+    }, 1000);
+  }
+  // reset level counter
+  if (counter == 5) {
+    counter = 0;
+  }
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [];
 const enemy1 = new Enemy(0, 60, 100);
 const enemy2 = new Enemy(0, 150, 150);
 const enemy3 = new Enemy(0, 230, 200);
-const enemy4 = new Enemy(100, 100, 250);
-allEnemies.push(enemy1, enemy2, enemy3, enemy4);
+//const enemy4 = new Enemy(100, 100, 250);
+allEnemies.push(enemy1, enemy2, enemy3);
 
 // Place the player object in a variable called player
-const player = new Player();
+const player = new Player(200, 405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
