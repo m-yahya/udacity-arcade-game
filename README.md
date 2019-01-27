@@ -1,5 +1,7 @@
 # Classic Arcade Game Clone Project
 
+This project is an implementation of Frogger game where a player has to reach the water side (on the top) without colliding with any of the enemies (bugs). Once the player is reached the water side safely, its position will be set to default with the level incremented. The game will be won after completing five levels.
+
 ## Table of Contents
 
 - [Instructions](#instructions)
@@ -7,14 +9,16 @@
 
 ## Instructions
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+1. Download/clone the repository and open index.html file in your favorite browser.
+2. Use the arrow keys to navigate the player left, right, up and down.
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
-
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
-
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+Good luck and have fun!
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+1. Fork the repository.
+2. Create your new feature branch: `git checkout -b new-feature-branch`
+3. Stage your changes: `git add .`
+3. Commit the changes: `git commit -m "add commit message"`
+4. Push to the branch: `git push origin new-feature-branch`
+5. Submit a pull request.
