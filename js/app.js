@@ -76,27 +76,27 @@ Player.prototype.handleInput = function(key) {
   if (level > 5) {
     level = 1;
   }
-}
+};
 
 // reset player position
 Player.prototype.resetPosition = function() {
   this.x = 200;
   this.y = 405;
   document.getElementById('level-counter').innerHTML = level;
-}
+};
 
 // update
 Player.prototype.update = function() {
-  for (enemy of allEnemies) {
-    if (this.x < enemy.x + 40 &&
-      this.x + 40 > enemy.x &&
-      this.y < enemy.y + 40 &&
-      this.y + 40 > enemy.y) {
+  for (let enemy of allEnemies) {
+    if (this.x < enemy.x + 80 &&
+      this.x + 80 > enemy.x &&
+      this.y < enemy.y + 70 &&
+      this.y + 70 > enemy.y) {
       level = 1;
       this.resetPosition();
     }
   }
-}
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
